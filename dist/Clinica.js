@@ -1,31 +1,38 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Clinica = void 0;
 class Clinica {
     nome;
-    animais = [];
-    funcionarios = [];
-    consultas = [];
+    funcionarios;
+    animais;
     constructor(nome) {
         this.nome = nome;
+        this.funcionarios = [];
+        this.animais = [];
     }
-    cadastrarAnimal(animal) {
-        this.animais.push(animal);
+    getNome() {
+        return this.nome;
     }
-    contratarFuncionario(funcionario) {
+    setNome(nome) {
+        this.nome = nome;
+    }
+    getFuncionarios() {
+        return [...this.funcionarios];
+    }
+    setFuncionarios(funcionarios) {
+        this.funcionarios = [...funcionarios];
+    }
+    getAnimais() {
+        return [...this.animais];
+    }
+    setAnimais(animais) {
+        this.animais = [...animais];
+    }
+    adicionarFuncionario(funcionario) {
         this.funcionarios.push(funcionario);
     }
-    agendarConsulta(consulta) {
-        this.consultas.push(consulta);
-    }
-    listarAnimais() {
-        this.animais.forEach(animal => {
-            console.log(animal.getNomeAnimal());
-        });
-    }
-    listarFuncionarios() {
-        this.funcionarios.forEach(funcionario => {
-            console.log(funcionario.getNomeFuncionario());
-        });
+    adicionarAnimal(animal) {
+        this.animais.push(animal);
     }
 }
-exports.default = Clinica;
+exports.Clinica = Clinica;

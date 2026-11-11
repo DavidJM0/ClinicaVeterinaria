@@ -1,51 +1,42 @@
-export default abstract class Funcionario{
-    private nome: string
-    private matricula: number
-    private salario: number
+export abstract class Funcionario {
+  private nome: string;
+  private matricula: string;
+  private salario: number;
 
-    constructor(
-        nome: string,
-        matricula: number,
-        salario: number
-    ){
-        this.nome = nome
-        this.matricula = matricula
-        this.salario = salario
+  constructor(nome: string, matricula: string, salario: number) {
+    this.nome = nome;
+    this.matricula = matricula;
+    this.salario = 0;
+    this.setSalario(salario);
+  }
+
+  getNome(): string {
+    return this.nome;
+  }
+
+  setNome(nome: string): void {
+    this.nome = nome;
+  }
+
+  getMatricula(): string {
+    return this.matricula;
+  }
+
+  setMatricula(matricula: string): void {
+    this.matricula = matricula;
+  }
+
+  getSalario(): number {
+    return this.salario;
+  }
+
+  setSalario(valor: number): void {
+    if (valor < 0) {
+      throw new Error("Salário não pode ser negativo");
     }
 
-    getNomeFuncionario():string{
-        return this.nome
-    }
+    this.salario = valor;
+  }
 
-    setNomeFuncionario(nome:string):void{
-        this.nome = nome
-    }
-
-    getMatricula():number{
-        return this.matricula
-    }
-
-    setMatricula(matricula:number):void{
-        this.matricula = matricula
-    }
-    
-    getSalario():number{
-        return this.salario
-    }
-
-    setSalario(salario:number):void{
-        this.salario = salario
-    }
-
-     alterarSalario(novoSalario: number): void {
-        if (novoSalario > 0) {
-            this.salario = novoSalario;
-            console.log("Salário alterado com sucesso!");
-        } else {
-            console.log("Salário inválido!");
-        }
-    }
-
-    abstract calcularBonus(): number;
-
+  abstract calcularBonus(): number;
 }

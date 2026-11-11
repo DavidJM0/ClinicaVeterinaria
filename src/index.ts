@@ -1,50 +1,46 @@
-import Cachorro from "./Cachorro";
-import Gato from "./Gato";
-import Ave from "./Ave";
-import Veterinario from "./Veterinario";
-import Recepcionista from "./Recepcionista";
-import ClinicaVeterinaria from "./Clinica";
-import Consulta from "./Consulta";
+import { Clinica } from "./Clinica";
+import { Cachorro } from "./Cachorro";
+import { Gato } from "./Gato";
+import { Ave } from "./Ave";
+import { Veterinario } from "./Veterinario";
+import { Recepcionista } from "./Recepcionista";
+import { Consulta } from "./Consulta";
 
-const cachorro = new Cachorro("Rex", 3, "João");
-const gato = new Gato("Mimi", 2, "Maria");
-const ave = new Ave("Loro", 1, "Pedro");
+const clinica = new Clinica("Clínica Dona Marta");
+
+const cachorro = new Cachorro("Rex", 3, "João", "Grande", true);
+const gato = new Gato("Mimi", 2, "Maria", true);
+const ave = new Ave("Loro", 1, "Pedro", "Papagaio", true);
 
 const veterinario = new Veterinario(
-    "Carlos", 101, 4000, 5
+  "Carlos", "001", 3000, "Clínico geral"
 );
 
 const recepcionista = new Recepcionista(
-    "Ana", 102, 2000, 10
+  "Ana", "002", 1800
 );
 
-const clinica = new ClinicaVeterinaria("Clínica Dona Marta");
-
-clinica.cadastrarAnimal(cachorro);
-clinica.cadastrarAnimal(gato);
-clinica.cadastrarAnimal(ave);
-
-clinica.contratarFuncionario(veterinario);
-clinica.contratarFuncionario(recepcionista);
-
-cachorro.emitirSom();
-cachorro.cuidadosDiarios();
-
-gato.emitirSom();
-gato.cuidadosDiarios();
-
-ave.emitirSom();
-ave.cuidadosDiarios();
+clinica.adicionarAnimal(cachorro);
+clinica.adicionarAnimal(gato);
+clinica.adicionarAnimal(ave);
+clinica.adicionarFuncionario(veterinario);
+clinica.adicionarFuncionario(recepcionista);
 
 const consulta = new Consulta(
-    cachorro,
-    veterinario,
+  cachorro,
+  veterinario,
+  new Date()
 );
 
-clinica.agendarConsulta(consulta);
-consulta.exibirConsulta();
+veterinario.realizarConsulta(consulta);
+recepcionista.confirmarAgendamento();
 
-console.log("Bônus do veterinário:", veterinario.calcularBonus());
-console.log("Bônus da recepcionista:", recepcionista.calcularBonus());
 
-veterinario.alterarSalario(4500);
+console.log(cachorro.emitirSom());
+console.log(gato.emitirSom());
+console.log(ave.emitirSom());
+console.log("Salário:", veterinario.getSalario());
+console.log("Bônus:", veterinario.calcularBonus());
+console.log("Bônus recepcionista:", recepcionista.calcularBonus());
+console.log("Animais:", clinica.getAnimais());
+console.log("Funcionários:", clinica.getFuncionarios());

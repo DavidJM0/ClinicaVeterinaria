@@ -1,20 +1,31 @@
-import Animal from "./Animal";
+import { Animal } from "./Animal";
 
-export default class Gato extends Animal{
+export class Gato extends Animal {
+  private usaArranhador: boolean;
 
-    constructor(
-        nome: string,
-        idade: number,
-        tutor: string
-    ){
-        super(nome, idade, tutor)
-    }
+  constructor(
+    nome: string,
+    idade: number,
+    tutor: string,
+    usaArranhador: boolean
+  ) {
+    super(nome, idade, tutor);
+    this.usaArranhador = usaArranhador;
+  }
 
-    emitirSom():void{
-        console.log(`${this.getNomeAnimal()} mia!`)
-    }
+  getUsaArranhador(): boolean {
+    return this.usaArranhador;
+  }
 
-    cuidadosDiarios():void{
-        console.log(`${this.getNomeAnimal()} precisa de um arranhador!`)
-    }
+  setUsaArranhador(valor: boolean): void {
+    this.usaArranhador = valor;
+  }
+
+  emitirSom(): string {
+    return "Miau!";
+  }
+
+  descreverCuidados(): string {
+    return "Precisa de arranhador.";
+  }
 }

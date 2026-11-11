@@ -1,31 +1,34 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Animal = void 0;
 class Animal {
     nome;
     idade;
-    tutor;
-    constructor(nome, idade, tutor) {
+    tutorResponsavel;
+    constructor(nome, idade, tutorResponsavel) {
         this.nome = nome;
         this.idade = idade;
-        this.tutor = tutor;
+        this.tutorResponsavel = tutorResponsavel;
     }
-    getNomeAnimal() {
+    getNome() {
         return this.nome;
     }
-    setNomeAnimal(nome) {
+    setNome(nome) {
         this.nome = nome;
     }
     getIdade() {
         return this.idade;
     }
     setIdade(idade) {
+        if (idade < 0)
+            throw new Error("Idade inválida");
         this.idade = idade;
     }
-    getTutor() {
-        return this.tutor;
+    getTutorResponsavel() {
+        return this.tutorResponsavel;
     }
-    setTutor(tutor) {
-        this.tutor = tutor;
+    setTutorResponsavel(tutor) {
+        this.tutorResponsavel = tutor;
     }
 }
-exports.default = Animal;
+exports.Animal = Animal;

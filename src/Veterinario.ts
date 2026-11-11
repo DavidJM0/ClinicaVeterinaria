@@ -1,28 +1,49 @@
-import Funcionario from "./Funcionario";
+import { Funcionario } from "./Funcionario";
+import { Consulta } from "./Consulta";
 
-export default class Veterinario extends Funcionario{
-    private consultasRealizadas: number
+export class Veterinario extends Funcionario {
+  private especialidade: string;
+  private totalConsultas: number;
 
-    constructor(
-        nome: string,
-        matricula: number,
-        salario: number,
-        consultasRealizdas: number 
-    ){
-        super(nome, matricula, salario)
-        this.consultasRealizadas = consultasRealizdas
-    }
+  constructor(
+    nome: string,
+    matricula: string,
+    salario: number,
+    especialidade: string,
+    totalConsultas: number = 0
+  ) {
+    super(nome, matricula, salario);
+    this.especialidade = especialidade;
+    this.totalConsultas = totalConsultas;
+  }
 
-    calcularBonus(): number {
-        return this.consultasRealizadas * 50;
-    }
+  getEspecialidade(): string {
+    return this.especialidade;
+  }
 
-    realizarConsulta(): void {
-        this.consultasRealizadas++;
-        console.log(`${this.getNomeFuncionario()} realizou uma consulta.`);
-    }
+  setEspecialidade(valor: string): void {
+    this.especialidade = valor;
+  }
 
-    prescreverTratamento(): void {
-        console.log(`${this.getNomeFuncionario()} prescreveu um tratamento.`);
-    }
-} 
+  getTotalConsultas(): number {
+    return this.totalConsultas;
+  }
+
+  setTotalConsultas(valor: number): void {
+    if (valor < 0) throw new Error("Quantidade inválida");
+    this.totalConsultas = valor;
+  }
+
+  realizarConsulta(consulta: Consulta): void {
+    this.totalConsultas++;
+    console.log("Consulta realizada!");
+  }
+
+  prescreverTratamento(): void {
+    console.log("Tratamento prescrito!");
+  }
+
+  calcularBonus(): number {
+    return this.totalConsultas * 50;
+  }
+}

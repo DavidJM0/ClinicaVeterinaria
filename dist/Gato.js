@@ -1,18 +1,24 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Animal_1 = __importDefault(require("./Animal"));
-class Gato extends Animal_1.default {
-    constructor(nome, idade, tutor) {
+exports.Gato = void 0;
+const Animal_1 = require("./Animal");
+class Gato extends Animal_1.Animal {
+    usaArranhador;
+    constructor(nome, idade, tutor, usaArranhador) {
         super(nome, idade, tutor);
+        this.usaArranhador = usaArranhador;
+    }
+    getUsaArranhador() {
+        return this.usaArranhador;
+    }
+    setUsaArranhador(valor) {
+        this.usaArranhador = valor;
     }
     emitirSom() {
-        console.log(`${this.getNomeAnimal()} mia!`);
+        return "Miau!";
     }
-    cuidadosDiarios() {
-        console.log(`${this.getNomeAnimal()} precisa de um arranhador!`);
+    descreverCuidados() {
+        return "Precisa de arranhador.";
     }
 }
-exports.default = Gato;
+exports.Gato = Gato;

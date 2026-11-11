@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Funcionario = void 0;
 class Funcionario {
     nome;
     matricula;
@@ -7,12 +8,13 @@ class Funcionario {
     constructor(nome, matricula, salario) {
         this.nome = nome;
         this.matricula = matricula;
-        this.salario = salario;
+        this.salario = 0;
+        this.setSalario(salario);
     }
-    getNomeFuncionario() {
+    getNome() {
         return this.nome;
     }
-    setNomeFuncionario(nome) {
+    setNome(nome) {
         this.nome = nome;
     }
     getMatricula() {
@@ -24,17 +26,11 @@ class Funcionario {
     getSalario() {
         return this.salario;
     }
-    setSalario(salario) {
-        this.salario = salario;
-    }
-    alterarSalario(novoSalario) {
-        if (novoSalario > 0) {
-            this.salario = novoSalario;
-            console.log("Salário alterado com sucesso!");
+    setSalario(valor) {
+        if (valor < 0) {
+            throw new Error("Salário não pode ser negativo");
         }
-        else {
-            console.log("Salário inválido!");
-        }
+        this.salario = valor;
     }
 }
-exports.default = Funcionario;
+exports.Funcionario = Funcionario;

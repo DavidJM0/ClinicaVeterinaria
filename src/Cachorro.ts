@@ -1,20 +1,42 @@
-import Animal from "./Animal";
+import { Animal } from "./Animal";
 
-export default class Cachorro extends Animal{
+export class Cachorro extends Animal {
+  private porte: string;
+  private precisaPasseioDiario: boolean;
 
-    constructor(
-        nome: string,
-        idade: number,
-        tutor: string
-    ){
-        super(nome, idade, tutor)
-    }
+  constructor(
+    nome: string,
+    idade: number,
+    tutor: string,
+    porte: string,
+    precisaPasseioDiario: boolean
+  ) {
+    super(nome, idade, tutor);
+    this.porte = porte;
+    this.precisaPasseioDiario = precisaPasseioDiario;
+  }
 
-    emitirSom():void{
-        console.log(`${this.getNomeAnimal()} late!`)
-    }
+  getPorte(): string {
+    return this.porte;
+  }
 
-    cuidadosDiarios():void{
-        console.log(`${this.getNomeAnimal()} precisa de passeios!`)
-    }
+  setPorte(porte: string): void {
+    this.porte = porte;
+  }
+
+  getPrecisaPasseioDiario(): boolean {
+    return this.precisaPasseioDiario;
+  }
+
+  setPrecisaPasseioDiario(valor: boolean): void {
+    this.precisaPasseioDiario = valor;
+  }
+
+  emitirSom(): string {
+    return "Au au!";
+  }
+
+  descreverCuidados(): string {
+    return "Precisa de passeio diário.";
+  }
 }

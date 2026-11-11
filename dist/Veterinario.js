@@ -1,24 +1,38 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Funcionario_1 = __importDefault(require("./Funcionario"));
-class Veterinario extends Funcionario_1.default {
-    consultasRealizadas;
-    constructor(nome, matricula, salario, consultasRealizdas) {
+exports.Veterinario = void 0;
+const Funcionario_1 = require("./Funcionario");
+class Veterinario extends Funcionario_1.Funcionario {
+    especialidade;
+    totalConsultas;
+    constructor(nome, matricula, salario, especialidade, totalConsultas = 0) {
         super(nome, matricula, salario);
-        this.consultasRealizadas = consultasRealizdas;
+        this.especialidade = especialidade;
+        this.totalConsultas = totalConsultas;
     }
-    calcularBonus() {
-        return this.consultasRealizadas * 50;
+    getEspecialidade() {
+        return this.especialidade;
     }
-    realizarConsulta() {
-        this.consultasRealizadas++;
-        console.log(`${this.getNomeFuncionario()} realizou uma consulta.`);
+    setEspecialidade(valor) {
+        this.especialidade = valor;
+    }
+    getTotalConsultas() {
+        return this.totalConsultas;
+    }
+    setTotalConsultas(valor) {
+        if (valor < 0)
+            throw new Error("Quantidade inválida");
+        this.totalConsultas = valor;
+    }
+    realizarConsulta(consulta) {
+        this.totalConsultas++;
+        console.log("Consulta realizada!");
     }
     prescreverTratamento() {
-        console.log(`${this.getNomeFuncionario()} prescreveu um tratamento.`);
+        console.log("Tratamento prescrito!");
+    }
+    calcularBonus() {
+        return this.totalConsultas * 50;
     }
 }
-exports.default = Veterinario;
+exports.Veterinario = Veterinario;

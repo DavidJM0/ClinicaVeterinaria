@@ -1,18 +1,32 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Animal_1 = __importDefault(require("./Animal"));
-class Ave extends Animal_1.default {
-    constructor(nome, idade, tutor) {
+exports.Ave = void 0;
+const Animal_1 = require("./Animal");
+class Ave extends Animal_1.Animal {
+    tipo;
+    precisaGaiola;
+    constructor(nome, idade, tutor, tipo, precisaGaiola) {
         super(nome, idade, tutor);
+        this.tipo = tipo;
+        this.precisaGaiola = precisaGaiola;
+    }
+    getTipo() {
+        return this.tipo;
+    }
+    setTipo(tipo) {
+        this.tipo = tipo;
+    }
+    getPrecisaGaiola() {
+        return this.precisaGaiola;
+    }
+    setPrecisaGaiola(valor) {
+        this.precisaGaiola = valor;
     }
     emitirSom() {
-        console.log(`${this.getNomeAnimal()} canta!`);
+        return "Piu piu!";
     }
-    cuidadosDiarios() {
-        console.log(`${this.getNomeAnimal()} precisa de uma gaiola!`);
+    descreverCuidados() {
+        return "Precisa de gaiola adequada.";
     }
 }
-exports.default = Ave;
+exports.Ave = Ave;

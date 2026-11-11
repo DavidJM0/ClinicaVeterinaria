@@ -1,16 +1,32 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Consulta = void 0;
 class Consulta {
     animal;
     veterinario;
-    constructor(animal, veterinario) {
+    data;
+    constructor(animal, veterinario, data) {
         this.animal = animal;
         this.veterinario = veterinario;
+        this.data = data;
     }
-    exibirConsulta() {
-        console.log("Consulta agendada:");
-        console.log(`Animal: ${this.animal.getNomeAnimal()}`);
-        console.log(`Veterinário: ${this.veterinario.getNomeFuncionario()}`);
+    getAnimal() {
+        return this.animal;
+    }
+    setAnimal(animal) {
+        this.animal = animal;
+    }
+    getVeterinario() {
+        return this.veterinario;
+    }
+    setVeterinario(veterinario) {
+        this.veterinario = veterinario;
+    }
+    getData() {
+        return this.data;
+    }
+    setData(data) {
+        this.data = data;
     }
 }
-exports.default = Consulta;
+exports.Consulta = Consulta;

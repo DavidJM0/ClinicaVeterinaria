@@ -1,24 +1,37 @@
-import Funcionario from "./Funcionario";
+import { Funcionario } from "./Funcionario";
+import { Consulta } from "./Consulta";
 
-export default class Recepcionista extends Funcionario{
-    private agendamentosConfirmados: number
+export class Recepcionista extends Funcionario {
+  private totalAgendamentosConfirmados: number;
 
-    constructor(
-        nome: string,
-        matricula: number,
-        salario: number,
-        agendamentosConfirmados: number
-    ){
-        super(nome, matricula, salario)
-        this.agendamentosConfirmados = agendamentosConfirmados
-    }
+  constructor(
+    nome: string,
+    matricula: string,
+    salario: number,
+    totalAgendamentos: number = 0
+  ) {
+    super(nome, matricula, salario);
+    this.totalAgendamentosConfirmados = totalAgendamentos;
+  }
 
-    calcularBonus(): number {
-        return this.agendamentosConfirmados * 10;
-    }
+  getTotalAgendamentosConfirmados(): number {
+    return this.totalAgendamentosConfirmados;
+  }
 
-    agendarAtendimento(): void {
-        this.agendamentosConfirmados++;
-        console.log(`${this.getNomeFuncionario()} confirmou um agendamento.`);
-    }
+  setTotalAgendamentosConfirmados(valor: number): void {
+    if (valor < 0) throw new Error("Quantidade inválida");
+    this.totalAgendamentosConfirmados = valor;
+  }
+
+  agendarConsulta(consulta: Consulta): void {
+    console.log("Consulta agendada!");
+  }
+
+  confirmarAgendamento(): void {
+    this.totalAgendamentosConfirmados++;
+  }
+
+  calcularBonus(): number {
+    return this.totalAgendamentosConfirmados * 10;
+  }
 }

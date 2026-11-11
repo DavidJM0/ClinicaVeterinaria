@@ -1,37 +1,46 @@
-import Animal from "./Animal";
-import Consulta from "./Consulta";
-import Funcionario from "./Funcionario";
+import { Animal } from "./Animal";
+import { Funcionario } from "./Funcionario";
 
-export default class Clinica{
-    public animais: Animal[] = [];
-    public funcionarios: Funcionario[] = [];
-    public consultas: Consulta[] = []
+export class Clinica {
+  private nome: string;
+  private funcionarios: Funcionario[];
+  private animais: Animal[];
 
-    constructor(
-        public nome: string
-    ){}
+  constructor(nome: string) {
+    this.nome = nome;
+    this.funcionarios = [];
+    this.animais = [];
+  }
 
-    cadastrarAnimal(animal: Animal): void {
-        this.animais.push(animal);
-    }
+  getNome(): string {
+    return this.nome;
+  }
 
-    contratarFuncionario(funcionario: Funcionario): void {
-        this.funcionarios.push(funcionario);
-    }
+  setNome(nome: string): void {
+    this.nome = nome;
+  }
 
-    agendarConsulta(consulta: Consulta): void {
-        this.consultas.push(consulta);
-    }
+  getFuncionarios(): Funcionario[] {
+    return [...this.funcionarios];
+  }
 
-    listarAnimais(): void {
-        this.animais.forEach(animal => {
-            console.log(animal.getNomeAnimal());
-        });
-    }
+  setFuncionarios(funcionarios: Funcionario[]): void {
+    this.funcionarios = [...funcionarios];
+  }
 
-    listarFuncionarios(): void {
-        this.funcionarios.forEach(funcionario => {
-            console.log(funcionario.getNomeFuncionario());
-        });
-    }
+  getAnimais(): Animal[] {
+    return [...this.animais];
+  }
+
+  setAnimais(animais: Animal[]): void {
+    this.animais = [...animais];
+  }
+
+  adicionarFuncionario(funcionario: Funcionario): void {
+    this.funcionarios.push(funcionario);
+  }
+
+  adicionarAnimal(animal: Animal): void {
+    this.animais.push(animal);
+  }
 }
